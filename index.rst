@@ -6,7 +6,7 @@
 Welcome to Tech Computer Center's documentation!
 ================================================
 
-ICE Cluster Documentation
+User Documentation
 ------------------
 .. toctree::
     :maxdepth: 1
