@@ -1,16 +1,13 @@
-
-
 TCC SGI Altix ICE Cluster User's Guide
-######################################Bryan Hughes
-16 Feb 2011
+######################################
 
 Introduction
-############
+============
 
 SGI Altix ICE Cluster is a SGI Altix ICE integrated compute environment for high performance computing.
 
 Hardware Overview
-#################
+=================
 
 - 22 Compute Nodes
 
@@ -29,7 +26,7 @@ Hardware Overview
 - 8.8 TB Scratch Temporary File Storage
 
 Software Overview
-#################
+=================
 
 Operating System
     SUSE Linux Enterprise Server 10.1 (x86_64)
@@ -44,13 +41,13 @@ Libraries
     Intel Math Kernel Library 10.0 Update 3
 
 Access
-######
+======
 
 Requesting Time On The Cluster
-==============================
+------------------------------
 
 Accounts
-========
+--------
 
 SGI Altix ICE Cluster accounts are completely separate from your TCC account. User ID, password, and file storage are not
 shared between accounts. You can transfer data between your TCC account and SGI Altix ICE Cluster account through scp or sftp described below.
@@ -61,7 +58,7 @@ scratch space on `/scratch/`
 .. note:: Please manually backup any important data to your TCC account or elsewhere
 
 Login
-=====
+-----
 
 Login using secure-shell (ssh):
 ssh \[user]@ice1.nmt.edu
@@ -71,7 +68,7 @@ scp \[file] \[user]@ice1.nmt.edu:\[dest]
 sftp \[user]@ice1.nmt.edu
 
 Requesting Resources
-####################
+====================
 
 .. warning:: Do not run jobs on service0. Please use it for compilation and small debugging runs only.
 
@@ -83,10 +80,10 @@ You can specify a walltime for your job with a  -l option to qsub in the form of
 the scheduler.
 
 Software
-########
+========
 
 Selecting Software Using Module
-===============================
+-------------------------------
 
 The cluster has several software packages that serve the same purpose and have the same executable name.
 To ensure the software package you want to use is being executed when you run the command, you will need to set up your
@@ -94,7 +91,7 @@ shell environment to prefer the package you want. This is done through the Modul
 command.
 
 Using The Module Command
-------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Module Command
     If the `module`command is not found, you need to manually
@@ -155,10 +152,10 @@ Unloading Modules
    in a file called  .bashrc  in your home folder.
 
 MPI Libraries
-=============
+-------------
 
 MPT: SGI Message Passing Toolkit
---------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note:: MPT is the default MPI installation. It is available without using `module`
 
@@ -188,7 +185,7 @@ accompanying documentation:
   the SGI SHMEM implementation.
 
 Compiling and Linking MPI Programs with MPT
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To compile using GNU compilers, choose one of the following commands
 
@@ -205,7 +202,7 @@ To compile programs with the Intel compiler, use the following commands:
 - ``icc -o myprog myprog.c -lmpi``
 
 Running MPT MPI Jobs using Portable Batch System (PBS)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Schedule a session with PBS using `qsub`.
 
@@ -221,7 +218,7 @@ whether running on a single host or a clustered system. See the mpiexec(8) man
 page for more details.
 
 MVAPICH2: MPI over InfiniBand
------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 MVAPICH is open source software developed largely by the Network-Based Computing Laboratory (NBCL) at Ohio State University. MVAPICH develops the Message Passing Interface (MPI) style of process-to-process communications for computing systems employing Infiniband and other Remote Direct Memory Access (RDMA) interconnects.
 
@@ -230,7 +227,7 @@ For more descriptions including the MVAPICH User Guide  and other MVAPICH public
 MVAPICH applications use the Infiniband network of SGI Altix ICE 8200 systems for interprocess RDMA communications. SGI Altix ICE 8200 systems are configured with two Infiniband fabrics, designated as ib0 and ib1. In order to maximize performance, SGI advises that the ib0 fabric be used for all MPI traffic, including MVAPICH MPI. The ib1 fabric is reserved for storage related traffic. The default configuration for MVAPICH MPI is to use only the ib0 fabric.
 
 Compiling and Linking MPI Programs with MVAPICH2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To compile using GNU compilers
 
@@ -267,7 +264,7 @@ Choose one of the following compiler commands
 - ``mpif90 -o myprog myprog.f``
 
 Running MVAPICH2 MPI Jobs using Portable Batch System (PBS)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 First configure mpd, create the $HOME/.mpd.conf file with perms 0x600
 
@@ -306,10 +303,10 @@ Clean up the mpi environment.
 ``mpdallexit``
 
 OpenMPI
--------
+^^^^^^^
 
 E-Mail
-######
+======
 
 The batch system will notify you about your jobs via email to your local account on service0. Look at
 the manual page for qsub, specifically options -M and -m for more email options.
@@ -326,10 +323,10 @@ Checking Mail Locally
     It is already configured to read from the local spool.
 
 Monitoring
-##########
+==========
 
 Monitoring Job Status
-=====================
+---------------------
 
 qstat
     ``qstat [*jobid*]``
@@ -345,7 +342,7 @@ tracejob
     .. note:: Note that the third column of the display contains a single letter (S, M, A, or L) indicating the source of the log message (Server, MOM, Accounting, or scheduler log files).
 
 Monitoring Cluster Status
-=========================
+-------------------------
 
 pbsnodes
     The `pbsnodes` command is used to query the status of hosts.
@@ -359,13 +356,13 @@ Ganglia
     `Ganglia` web monitoring - http://ice1-admin.nmt.edu/ganglia - still firewalled.
 
 Examples
-########
+========
 
 MPI with MVAPICH-2 - Interactive Batch Session - Walkthrough
-============================================================
+------------------------------------------------------------
 
 MVAPICH2 MPI Hello World
-------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Create `hello.c`
 ::
