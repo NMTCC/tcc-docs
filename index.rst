@@ -6,17 +6,17 @@
 Welcome to Tech Computer Center's documentation!
 ================================================
 
-Contents:
 
-.. toctree::
-   :maxdepth: 2
+File transfer
+-------------
+Moving files to or from the TCC
+
+Word processing
+---------------
+
+Endnote
+-------
+A bibliography tool. (Note: Access to this page and its proprietary software downloads is limited to computers on the NMT network.)
 
 
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
 
