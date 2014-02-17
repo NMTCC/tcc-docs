@@ -6,7 +6,7 @@
 Welcome to Tech Computer Center's documentation!
 ================================================
 
-User Documentation
+TCC's User Documentation
 ------------------
 .. toctree::
     :maxdepth: 1
